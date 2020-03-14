@@ -79,6 +79,10 @@ export class Skier extends Entity {
         if(this.direction === Constants.SKIER_DIRECTIONS.RIGHT) {
             this.moveSkierRight();
         }
+        else if(this.direction === SKIER_DIRECTIONS.CRASH) {
+            this.moveSkierRight();
+            this.setDirection(SKIER_DIRECTIONS.RIGHT);
+        }
         else {
             this.setDirection(this.direction + 1);
         }
