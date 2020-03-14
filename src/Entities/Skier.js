@@ -1,6 +1,7 @@
 import * as Constants from "../Constants";
 import { Entity } from "./Entity";
 import { intersectTwoRects, Rect } from "../Core/Utils";
+import {SKIER_DIRECTIONS} from "../Constants";
 
 export class Skier extends Entity {
     assetName = Constants.SKIER_DOWN;
@@ -64,6 +65,10 @@ export class Skier extends Entity {
     turnLeft() {
         if(this.direction === Constants.SKIER_DIRECTIONS.LEFT) {
             this.moveSkierLeft();
+        }
+        else if(this.direction === SKIER_DIRECTIONS.CRASH) {
+            this.moveSkierLeft();
+            this.setDirection(SKIER_DIRECTIONS.LEFT);
         }
         else {
             this.setDirection(this.direction - 1);
