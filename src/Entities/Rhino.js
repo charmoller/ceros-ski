@@ -16,21 +16,30 @@ export class Rhino extends Entity {
     }
 
     setDirection(direction) {
+        this.previousDirection = this.direction;
         this.direction = direction;
     }
 
     move(skierX, skierY, skierDirection) {
 
         let speed = this.speed;
-        if ((skierDirection === Constants.SKIER_DIRECTIONS.LEFT_DOWN) || (skierDirection === Constants.SKIER_DIRECTIONS.RIGHT_DOWN)) {
+        if (this.direction !== this.previousDirection) {
+            speed = this.speed * Constants.RHINO_DIAGONAL_SPEED_REDUCER;
+        }
+        else {
             speed = this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
         }
 
         if (skierX < this.x) {
             this.x -= speed;
+            this.setDirection(SKIER_DIRECTIONS.LEFT_DOWN);
         }
         else if (skierX > this.x) {
             this.x += speed;
+            this.setDirection(SKIER_DIRECTIONS.RIGHT_DOWN);
+        }
+        else {
+            this.setDirection(SKIER_DIRECTIONS.DOWN);
         }
 
         if (skierY < this.y) {

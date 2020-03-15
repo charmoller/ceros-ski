@@ -21,11 +21,11 @@ export const RHINO_DELAY = 0;
 export const RHINO_DEFAULT = 'rhinoDefault';
 export const RHINO_RUN_LEFT = 'rhinoRunLeft';
 
-export const SKIER_STARTING_SPEED = 5;
+export const SKIER_STARTING_SPEED = 10;
 export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
 
 export const RHINO_STARTING_SPEED = 10;
-export const RHINO_DIAGONAL_SPEED_REDUCER = 10;
+export const RHINO_DIAGONAL_SPEED_REDUCER = 1.5;
 export const RHINO_POSITION_OFFSET = 300;
 
 export const ASSETS = {
