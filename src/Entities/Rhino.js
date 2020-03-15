@@ -9,6 +9,7 @@ export class Rhino extends Entity {
 
     direction = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.RHINO_STARTING_SPEED;
+    turning = 0;
 
     constructor(x, y, direction) {
         super(x, y);
@@ -16,37 +17,21 @@ export class Rhino extends Entity {
     }
 
     setDirection(direction) {
-        this.previousDirection = this.direction;
         this.direction = direction;
     }
 
-    move(skierX, skierY, skierDirection) {
+    move() {
 
-        let speed = this.speed;
-        if (this.direction !== this.previousDirection) {
-            speed = this.speed * Constants.RHINO_DIAGONAL_SPEED_REDUCER;
-        }
-        else {
-            speed = this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
-        }
-
-        if (skierX < this.x) {
-            this.x -= speed;
-            this.setDirection(SKIER_DIRECTIONS.LEFT_DOWN);
-        }
-        else if (skierX > this.x) {
-            this.x += speed;
-            this.setDirection(SKIER_DIRECTIONS.RIGHT_DOWN);
-        }
-        else {
-            this.setDirection(SKIER_DIRECTIONS.DOWN);
-        }
-
-        if (skierY < this.y) {
-            this.y -= speed;
-        }
-        else if (skierY > this.y) {
-            this.y += speed;
+        switch(this.direction) {
+            case Constants.SKIER_DIRECTIONS.LEFT_DOWN:
+                this.moveRhinoLeftDown();
+                break;
+            case Constants.SKIER_DIRECTIONS.DOWN:
+                this.moveRhinoDown();
+                break;
+            case Constants.SKIER_DIRECTIONS.RIGHT_DOWN:
+                this.moveRhinoRightDown();
+                break;
         }
     }
 
@@ -55,17 +40,17 @@ export class Rhino extends Entity {
     }
 
     moveRhinoLeftDown() {
-        this.x -= this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
-        this.y += this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
+        this.x -= this.getSpeed() / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
+        this.y += this.getSpeed()  / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
     }
 
     moveRhinoDown() {
-        this.y += this.speed;
+        this.y += this.getSpeed() ;
     }
 
     moveRhinoRightDown() {
-        this.x += this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
-        this.y += this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
+        this.x += this.getSpeed()  / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
+        this.y += this.getSpeed()  / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
     }
 
     moveRhinoRight() {
@@ -77,6 +62,7 @@ export class Rhino extends Entity {
     }
 
     turnLeft() {
+        this.setTurning();
         if(this.direction === Constants.SKIER_DIRECTIONS.LEFT) {
             this.moveRhinoLeft();
         }
@@ -90,6 +76,7 @@ export class Rhino extends Entity {
     }
 
     turnRight() {
+        this.setTurning();
         if(this.direction === Constants.SKIER_DIRECTIONS.RIGHT) {
             this.moveRhinoRight();
         }
@@ -103,12 +90,28 @@ export class Rhino extends Entity {
     }
 
     turnUp() {
+        this.setTurning();
         if(this.direction === Constants.SKIER_DIRECTIONS.LEFT || this.direction === Constants.SKIER_DIRECTIONS.RIGHT) {
             this.moveRhinoUp();
         }
     }
 
     turnDown() {
+        this.setTurning();
         this.setDirection(Constants.SKIER_DIRECTIONS.DOWN);
+    }
+
+    setTurning() {
+        this.turning = 150;
+    }
+
+    getSpeed() {
+        if (this.turning > 0) {
+            this.turning--;
+            return this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
+        }
+        else {
+            return this.speed;
+        }
     }
 }

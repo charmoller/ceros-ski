@@ -70,10 +70,10 @@ export class Game {
     displayRhino() {
         if(this.skier.isRhinoChasing()) {
             if (this.rhino === undefined) {
-                this.rhino = new Rhino(this.skier.x -  Constants.RHINO_POSITION_OFFSET, this.skier.y -  Constants.RHINO_POSITION_OFFSET, this.skier.direction);
+                this.rhino = new Rhino(this.skier.x, this.skier.y -  Constants.RHINO_POSITION_OFFSET, this.skier.direction);
             }
 
-            this.rhino.move(this.skier.x, this.skier.y, this.skier.direction);
+            this.rhino.move();
         }
     }
 
@@ -105,28 +105,28 @@ export class Game {
     turnLeft() {
         this.skier.turnLeft();
         if (this.rhino !== undefined) {
-            //this.rhino.turnLeft();
+            this.rhino.turnLeft();
         }
     }
 
     turnRight() {
         this.skier.turnRight();
         if (this.rhino !== undefined) {
-            //this.rhino.turnRight();
+            this.rhino.turnRight();
         }
     }
 
     turnUp() {
         this.skier.turnUp();
         if (this.rhino !== undefined) {
-           //this.rhino.turnUp();
+           this.rhino.turnUp();
         }
     }
 
     turnDown() {
         this.skier.turnDown();
         if (this.rhino !== undefined) {
-            //this.rhino.turnDown();
+            this.rhino.turnDown();
         }
     }
 }

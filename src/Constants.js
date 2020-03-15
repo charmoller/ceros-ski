@@ -25,8 +25,8 @@ export const SKIER_STARTING_SPEED = 10;
 export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
 
 export const RHINO_STARTING_SPEED = 10;
-export const RHINO_DIAGONAL_SPEED_REDUCER = 1.5;
-export const RHINO_POSITION_OFFSET = 300;
+export const RHINO_DIAGONAL_SPEED_REDUCER = 1.2;
+export const RHINO_POSITION_OFFSET = 200;
 
 export const ASSETS = {
     [SKIER_CRASH]: 'img/skier_crash.png',
