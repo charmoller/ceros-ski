@@ -45,7 +45,7 @@ export class Game {
 
         this.obstacleManager.placeNewObstacle(this.gameWindow, previousGameWindow);
 
-        this.skier.checkIfSkierHitObstacle(this.obstacleManager, this.assetManager);
+        //this.skier.checkIfSkierHitObstacle(this.obstacleManager, this.assetManager);
     }
 
     drawGameWindow() {
@@ -73,7 +73,7 @@ export class Game {
                 this.rhino = new Rhino(this.skier.x -  Constants.RHINO_POSITION_OFFSET, this.skier.y -  Constants.RHINO_POSITION_OFFSET, this.skier.direction);
             }
 
-            this.rhino.move();
+            this.rhino.move(this.skier.x, this.skier.y, this.skier.direction);
         }
     }
 
@@ -105,28 +105,28 @@ export class Game {
     turnLeft() {
         this.skier.turnLeft();
         if (this.rhino !== undefined) {
-            this.rhino.turnLeft();
+            //this.rhino.turnLeft();
         }
     }
 
     turnRight() {
         this.skier.turnRight();
         if (this.rhino !== undefined) {
-            this.rhino.turnRight();
+            //this.rhino.turnRight();
         }
     }
 
     turnUp() {
         this.skier.turnUp();
         if (this.rhino !== undefined) {
-            this.rhino.turnUp();
+           //this.rhino.turnUp();
         }
     }
 
     turnDown() {
         this.skier.turnDown();
         if (this.rhino !== undefined) {
-            this.rhino.turnDown();
+            //this.rhino.turnDown();
         }
     }
 }

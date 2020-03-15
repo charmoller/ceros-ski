@@ -19,17 +19,25 @@ export class Rhino extends Entity {
         this.direction = direction;
     }
 
-    move() {
-        switch(this.direction) {
-            case Constants.SKIER_DIRECTIONS.LEFT_DOWN:
-                this.moveRhinoLeftDown();
-                break;
-            case Constants.SKIER_DIRECTIONS.DOWN:
-                this.moveRhinoDown();
-                break;
-            case Constants.SKIER_DIRECTIONS.RIGHT_DOWN:
-                this.moveRhinoRightDown();
-                break;
+    move(skierX, skierY, skierDirection) {
+
+        let speed = this.speed;
+        if ((skierDirection === Constants.SKIER_DIRECTIONS.LEFT_DOWN) || (skierDirection === Constants.SKIER_DIRECTIONS.RIGHT_DOWN)) {
+            speed = this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
+        }
+
+        if (skierX < this.x) {
+            this.x -= speed;
+        }
+        else if (skierX > this.x) {
+            this.x += speed;
+        }
+
+        if (skierY < this.y) {
+            this.y -= speed;
+        }
+        else if (skierY > this.y) {
+            this.y += speed;
         }
     }
 

@@ -17,16 +17,16 @@ export const SKIER_JUMP_3 = 'skierJump3';
 export const SKIER_JUMP_4 = 'skierJump4';
 export const SKIER_JUMP_5 = 'skierJump5';
 export const RAMP = 'ramp';
-export const RHINO_DELAY = 100;
+export const RHINO_DELAY = 0;
 export const RHINO_DEFAULT = 'rhinoDefault';
 export const RHINO_RUN_LEFT = 'rhinoRunLeft';
 
-export const SKIER_STARTING_SPEED = 10;
+export const SKIER_STARTING_SPEED = 5;
 export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
 
 export const RHINO_STARTING_SPEED = 10;
-export const RHINO_DIAGONAL_SPEED_REDUCER = 1.4142;
-export const RHINO_POSITION_OFFSET = 50;
+export const RHINO_DIAGONAL_SPEED_REDUCER = 10;
+export const RHINO_POSITION_OFFSET = 300;
 
 export const ASSETS = {
     [SKIER_CRASH]: 'img/skier_crash.png',
