@@ -17,9 +17,16 @@ export const SKIER_JUMP_3 = 'skierJump3';
 export const SKIER_JUMP_4 = 'skierJump4';
 export const SKIER_JUMP_5 = 'skierJump5';
 export const RAMP = 'ramp';
+export const RHINO_DELAY = 100;
+export const RHINO_DEFAULT = 'rhinoDefault';
+export const RHINO_RUN_LEFT = 'rhinoRunLeft';
 
-export const SKIER_STARTING_SPEED = 5;
+export const SKIER_STARTING_SPEED = 10;
 export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
+
+export const RHINO_STARTING_SPEED = 10;
+export const RHINO_DIAGONAL_SPEED_REDUCER = 1.4142;
+export const RHINO_POSITION_OFFSET = 50;
 
 export const ASSETS = {
     [SKIER_CRASH]: 'img/skier_crash.png',
@@ -37,7 +44,9 @@ export const ASSETS = {
     [SKIER_JUMP_3] : 'img/skier_jump_3.png',
     [SKIER_JUMP_4] : 'img/skier_jump_4.png',
     [SKIER_JUMP_5] : 'img/skier_jump_5.png',
-    [RAMP] : 'img/jump_ramp.png'
+    [RAMP] : 'img/jump_ramp.png',
+    [RHINO_DEFAULT] : 'img/rhino_default.png',
+    [RHINO_RUN_LEFT] : 'img/rhino_run_left.png',
 };
 
 export const SKIER_DIRECTIONS = {

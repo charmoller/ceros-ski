@@ -9,6 +9,7 @@ export class Skier extends Entity {
     direction = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.SKIER_STARTING_SPEED;
     jump  = Constants.SKIER_JUMP.END;
+    rhinoDelay = Constants.RHINO_DELAY;
 
     constructor(x, y) {
         super(x, y);
@@ -49,6 +50,10 @@ export class Skier extends Entity {
                 this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_3];
             if ((this.jump < Constants.SKIER_JUMP.FLIP_3) && (this.jump >= Constants.SKIER_JUMP.END))
                 this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.END];
+        }
+
+        if (this.rhinoDelay > 0) {
+            this.rhinoDelay--;
         }
     }
 
@@ -151,5 +156,10 @@ export class Skier extends Entity {
     isJumping()
     {
         return this.jump !== Constants.SKIER_JUMP.END;
+    }
+
+    isRhinoChasing()
+    {
+        return this.rhinoDelay === 0;
     }
 }
