@@ -16,8 +16,9 @@ export const SKIER_JUMP_2 = 'skierJump2';
 export const SKIER_JUMP_3 = 'skierJump3';
 export const SKIER_JUMP_4 = 'skierJump4';
 export const SKIER_JUMP_5 = 'skierJump5';
+export const RAMP = 'ramp';
 
-export const SKIER_STARTING_SPEED = 8;
+export const SKIER_STARTING_SPEED = 5;
 export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
 
 export const ASSETS = {
@@ -35,7 +36,8 @@ export const ASSETS = {
     [SKIER_JUMP_2] : 'img/skier_jump_2.png',
     [SKIER_JUMP_3] : 'img/skier_jump_3.png',
     [SKIER_JUMP_4] : 'img/skier_jump_4.png',
-    [SKIER_JUMP_5] : 'img/skier_jump_5.png'
+    [SKIER_JUMP_5] : 'img/skier_jump_5.png',
+    [RAMP] : 'img/jump_ramp.png'
 };
 
 export const SKIER_DIRECTIONS = {

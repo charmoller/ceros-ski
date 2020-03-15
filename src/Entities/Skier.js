@@ -143,7 +143,8 @@ export class Skier extends Entity {
         });
 
         if(collision) {
-            this.setDirection(Constants.SKIER_DIRECTIONS.CRASH);
+            if (collision.isRamp()) this.jumpUp();
+            else this.setDirection(Constants.SKIER_DIRECTIONS.CRASH);
         }
     };
 

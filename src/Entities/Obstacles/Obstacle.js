@@ -6,7 +6,8 @@ const assetTypes = [
     Constants.TREE,
     Constants.TREE_CLUSTER,
     Constants.ROCK1,
-    Constants.ROCK2
+    Constants.ROCK2,
+    Constants.RAMP
 ];
 
 export class Obstacle extends Entity {
@@ -20,5 +21,9 @@ export class Obstacle extends Entity {
     isRock() {
         if ((this.assetName === Constants.ROCK1) || (this.assetName === Constants.ROCK2)) return true;
         else return false;
+    }
+
+    isRamp() {
+        return this.assetName === Constants.RAMP;
     }
 }
