@@ -8,7 +8,7 @@ export class Skier extends Entity {
 
     direction = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.SKIER_STARTING_SPEED;
-    jump  = Constants.SKIER_JUMP.STEP_5;
+    jump  = Constants.SKIER_JUMP.END;
 
     constructor(x, y) {
         super(x, y);
@@ -36,19 +36,19 @@ export class Skier extends Entity {
                 break;
         }
 
-        if (this.jump === Constants.SKIER_JUMP.STEP_5) {
+        if (this.jump === Constants.SKIER_JUMP.END) {
             this.setDirection(this.direction);
         }
         else {
             this.jump--;
-            if ((this.jump < Constants.SKIER_JUMP.STEP_1) && (this.jump >= Constants.SKIER_JUMP.STEP_2))
-                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.STEP_2];
-            else if ((this.jump < Constants.SKIER_JUMP.STEP_2) && (this.jump >= Constants.SKIER_JUMP.STEP_3))
-                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.STEP_3];
-            if ((this.jump < Constants.SKIER_JUMP.STEP_3) && (this.jump >= Constants.SKIER_JUMP.STEP_4))
-                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.STEP_4];
-            if ((this.jump < Constants.SKIER_JUMP.STEP_4) && (this.jump >= Constants.SKIER_JUMP.STEP_5))
-                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.STEP_5];
+            if ((this.jump < Constants.SKIER_JUMP.START) && (this.jump >= Constants.SKIER_JUMP.FLIP_1))
+                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_1];
+            else if ((this.jump < Constants.SKIER_JUMP.FLIP_1) && (this.jump >= Constants.SKIER_JUMP.FLIP_2))
+                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_2];
+            if ((this.jump < Constants.SKIER_JUMP.FLIP_2) && (this.jump >= Constants.SKIER_JUMP.FLIP_3))
+                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_3];
+            if ((this.jump < Constants.SKIER_JUMP.FLIP_3) && (this.jump >= Constants.SKIER_JUMP.END))
+                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.END];
         }
     }
 
@@ -115,7 +115,7 @@ export class Skier extends Entity {
     }
 
     jumpUp() {
-        this.jump = Constants.SKIER_JUMP.STEP_1;
+        this.jump = Constants.SKIER_JUMP.START;
         this.assetName = Constants.SKIER_JUMP_ASSET[this.jump];
     }
 
@@ -149,6 +149,6 @@ export class Skier extends Entity {
 
     isJumping()
     {
-        return this.jump !== Constants.SKIER_JUMP.STEP_5;
+        return this.jump !== Constants.SKIER_JUMP.END;
     }
 }
