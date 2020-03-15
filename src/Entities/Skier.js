@@ -8,6 +8,7 @@ export class Skier extends Entity {
 
     direction = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.SKIER_STARTING_SPEED;
+    jump  = Constants.SKIER_JUMP.STEP_5;
 
     constructor(x, y) {
         super(x, y);
@@ -33,6 +34,21 @@ export class Skier extends Entity {
             case Constants.SKIER_DIRECTIONS.RIGHT_DOWN:
                 this.moveSkierRightDown();
                 break;
+        }
+
+        if (this.jump === Constants.SKIER_JUMP.STEP_5) {
+            this.setDirection(this.direction);
+        }
+        else {
+            this.jump--;
+            if ((this.jump < Constants.SKIER_JUMP.STEP_1) && (this.jump >= Constants.SKIER_JUMP.STEP_2))
+                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.STEP_2];
+            else if ((this.jump < Constants.SKIER_JUMP.STEP_2) && (this.jump >= Constants.SKIER_JUMP.STEP_3))
+                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.STEP_3];
+            if ((this.jump < Constants.SKIER_JUMP.STEP_3) && (this.jump >= Constants.SKIER_JUMP.STEP_4))
+                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.STEP_4];
+            if ((this.jump < Constants.SKIER_JUMP.STEP_4) && (this.jump >= Constants.SKIER_JUMP.STEP_5))
+                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.STEP_5];
         }
     }
 
@@ -98,6 +114,11 @@ export class Skier extends Entity {
         this.setDirection(Constants.SKIER_DIRECTIONS.DOWN);
     }
 
+    jumpUp() {
+        this.jump = Constants.SKIER_JUMP.STEP_1;
+        this.assetName = Constants.SKIER_JUMP_ASSET[this.jump];
+    }
+
     checkIfSkierHitObstacle(obstacleManager, assetManager) {
         const asset = assetManager.getAsset(this.assetName);
         const skierBounds = new Rect(
@@ -117,11 +138,17 @@ export class Skier extends Entity {
                 obstaclePosition.y
             );
 
-            return intersectTwoRects(skierBounds, obstacleBounds);
+            if (this.isJumping() && obstacle.isRock()) return false;
+            else return intersectTwoRects(skierBounds, obstacleBounds);
         });
 
         if(collision) {
             this.setDirection(Constants.SKIER_DIRECTIONS.CRASH);
         }
     };
+
+    isJumping()
+    {
+        return this.jump !== Constants.SKIER_JUMP.STEP_5;
+    }
 }

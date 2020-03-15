@@ -16,4 +16,9 @@ export class Obstacle extends Entity {
         const assetIdx = randomInt(0, assetTypes.length - 1);
         this.assetName = assetTypes[assetIdx];
     }
+
+    isRock() {
+        if ((this.assetName === Constants.ROCK1) || (this.assetName === Constants.ROCK2)) return true;
+        else return false;
+    }
 }
