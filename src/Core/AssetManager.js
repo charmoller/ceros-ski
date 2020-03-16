@@ -30,6 +30,11 @@ export class AssetManager {
     }
 
     getAsset(assetName) {
-        return this.loadedAssets[assetName];
+        const asset = this.loadedAssets[assetName];
+        if (asset === undefined) {
+            throw new Error("Asset " + assetName + " not found");
+        }
+
+        return asset;
     }
 }
