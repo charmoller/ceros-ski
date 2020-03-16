@@ -89,12 +89,12 @@ export const RHINO_RUN = {
 };
 
 export const RHINO_EAT = {
-    LIFT : 5,
-    LIFT_MOUTH_OPEN : 4,
-    EAT_1 : 3,
-    EAT_2 : 2,
-    EAT_3 : 1,
-    EAT_4 : 0
+    LIFT : 120,
+    LIFT_MOUTH_OPEN : 100,
+    EAT_1 : 80,
+    EAT_2 : 60,
+    EAT_3 : 40,
+    EAT_4 : 20
 };
 
 export const SKIER_DIRECTION_ASSET = {
