@@ -17,98 +17,49 @@ export class Rhino extends Entity {
     }
 
     setDirection(direction) {
+        this.previousDirection = this.direction;
         this.direction = direction;
     }
 
-    move() {
+    chase(skierX, skierY, skierDirection)  {
 
-        switch(this.direction) {
-            case Constants.SKIER_DIRECTIONS.LEFT_DOWN:
-                this.moveRhinoLeftDown();
-                break;
-            case Constants.SKIER_DIRECTIONS.DOWN:
-                this.moveRhinoDown();
-                break;
-            case Constants.SKIER_DIRECTIONS.RIGHT_DOWN:
-                this.moveRhinoRightDown();
-                break;
+        this.setDirection(skierDirection);
+
+        if (this.isChangingDirection()) this.setTurning();
+
+        if (skierX < this.x) {
+            this.x -= this.getSpeed();
+            if (this.x < skierX) this.x = skierX;
         }
-    }
-
-    moveRhinoLeft() {
-        this.x -= Constants.SKIER_STARTING_SPEED;
-    }
-
-    moveRhinoLeftDown() {
-        this.x -= this.getSpeed() / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
-        this.y += this.getSpeed()  / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
-    }
-
-    moveRhinoDown() {
-        this.y += this.getSpeed() ;
-    }
-
-    moveRhinoRightDown() {
-        this.x += this.getSpeed()  / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
-        this.y += this.getSpeed()  / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
-    }
-
-    moveRhinoRight() {
-        this.x += Constants.SKIER_STARTING_SPEED;
-    }
-
-    moveRhinoUp() {
-        this.y -= Constants.SKIER_STARTING_SPEED;
-    }
-
-    turnLeft() {
-        this.setTurning();
-        if(this.direction === Constants.SKIER_DIRECTIONS.LEFT) {
-            this.moveRhinoLeft();
+        else if (skierX > this.x) {
+            this.x += this.getSpeed();
+            if (this.x > skierX) this.x = skierX;
         }
-        else if(this.direction === SKIER_DIRECTIONS.CRASH) {
-            this.moveRhinoLeft();
-            this.setDirection(SKIER_DIRECTIONS.LEFT);
+
+        if (skierY < this.y) {
+            this.y -= this.getSpeed();
+            if (this.y < skierY) this.y = skierY;
         }
-        else {
-            this.setDirection(this.direction - 1);
+        else if (skierY > this.y) {
+            this.y += this.getSpeed();
+            if (this.y > skierY) this.y = skierY;
         }
+
     }
 
-    turnRight() {
-        this.setTurning();
-        if(this.direction === Constants.SKIER_DIRECTIONS.RIGHT) {
-            this.moveRhinoRight();
-        }
-        else if(this.direction === SKIER_DIRECTIONS.CRASH) {
-            this.moveRhinoRight();
-            this.setDirection(SKIER_DIRECTIONS.RIGHT);
-        }
-        else {
-            this.setDirection(this.direction + 1);
-        }
+    isChangingDirection() {
+        if (this.previousDirection !== this.direction) return true;
+        else return false;
     }
 
-    turnUp() {
-        this.setTurning();
-        if(this.direction === Constants.SKIER_DIRECTIONS.LEFT || this.direction === Constants.SKIER_DIRECTIONS.RIGHT) {
-            this.moveRhinoUp();
-        }
-    }
-
-    turnDown() {
-        this.setTurning();
-        this.setDirection(Constants.SKIER_DIRECTIONS.DOWN);
-    }
-
-    setTurning() {
-        this.turning = 150;
+   setTurning() {
+        this.turning = 50;
     }
 
     getSpeed() {
         if (this.turning > 0) {
             this.turning--;
-            return this.speed / Constants.RHINO_DIAGONAL_SPEED_REDUCER;
+            return this.speed / Constants.RHINO_TURN_SPEED_REDUCER;
         }
         else {
             return this.speed;

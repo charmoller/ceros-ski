@@ -162,4 +162,10 @@ export class Skier extends Entity {
     {
         return this.rhinoDelay === 0;
     }
+
+    isOnRight(x)
+    {
+        if (this.x > x) return true;
+        else return false;
+   }
 }

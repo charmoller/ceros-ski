@@ -73,60 +73,32 @@ export class Game {
                 this.rhino = new Rhino(this.skier.x, this.skier.y -  Constants.RHINO_POSITION_OFFSET, this.skier.direction);
             }
 
-            this.rhino.move();
+            this.rhino.chase(this.skier.x, this.skier.y, this.skier.direction);
         }
     }
 
     handleKeyDown(event) {
         switch(event.which) {
             case Constants.KEYS.LEFT:
-                this.turnLeft();
+                this.skier.turnLeft();
                 event.preventDefault();
                 break;
             case Constants.KEYS.RIGHT:
-                this.turnRight();
+                this.skier.turnRight();
                 event.preventDefault();
                 break;
             case Constants.KEYS.UP:
-                this.turnUp();
+                this.skier.turnUp();
                 event.preventDefault();
                 break;
             case Constants.KEYS.DOWN:
-                this.turnDown();
+                this.skier.turnDown();
                 event.preventDefault();
                 break;
             case Constants.KEYS.SPACE:
                 this.skier.jumpUp();
                 event.preventDefault();
                 break;
-        }
-    }
-
-    turnLeft() {
-        this.skier.turnLeft();
-        if (this.rhino !== undefined) {
-            this.rhino.turnLeft();
-        }
-    }
-
-    turnRight() {
-        this.skier.turnRight();
-        if (this.rhino !== undefined) {
-            this.rhino.turnRight();
-        }
-    }
-
-    turnUp() {
-        this.skier.turnUp();
-        if (this.rhino !== undefined) {
-           this.rhino.turnUp();
-        }
-    }
-
-    turnDown() {
-        this.skier.turnDown();
-        if (this.rhino !== undefined) {
-            this.rhino.turnDown();
         }
     }
 }
