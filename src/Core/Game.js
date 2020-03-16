@@ -45,7 +45,7 @@ export class Game {
 
         this.obstacleManager.placeNewObstacle(this.gameWindow, previousGameWindow);
 
-        //this.skier.checkIfSkierHitObstacle(this.obstacleManager, this.assetManager);
+        this.skier.checkIfSkierHitObstacle(this.obstacleManager, this.assetManager);
     }
 
     drawGameWindow() {
@@ -80,27 +80,29 @@ export class Game {
     }
 
     handleKeyDown(event) {
-        switch(event.which) {
-            case Constants.KEYS.LEFT:
-                this.skier.turnLeft();
-                event.preventDefault();
-                break;
-            case Constants.KEYS.RIGHT:
-                this.skier.turnRight();
-                event.preventDefault();
-                break;
-            case Constants.KEYS.UP:
-                this.skier.turnUp();
-                event.preventDefault();
-                break;
-            case Constants.KEYS.DOWN:
-                this.skier.turnDown();
-                event.preventDefault();
-                break;
-            case Constants.KEYS.SPACE:
-                this.skier.jumpUp();
-                event.preventDefault();
-                break;
+        if (!this.skier.eaten) {
+            switch(event.which) {
+                case Constants.KEYS.LEFT:
+                    this.skier.turnLeft();
+                    event.preventDefault();
+                    break;
+                case Constants.KEYS.RIGHT:
+                    this.skier.turnRight();
+                    event.preventDefault();
+                    break;
+                case Constants.KEYS.UP:
+                    this.skier.turnUp();
+                    event.preventDefault();
+                    break;
+                case Constants.KEYS.DOWN:
+                    this.skier.turnDown();
+                    event.preventDefault();
+                    break;
+                case Constants.KEYS.SPACE:
+                    this.skier.jumpUp();
+                    event.preventDefault();
+                    break;
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ export const SKIER_JUMP_3 = 'skierJump3';
 export const SKIER_JUMP_4 = 'skierJump4';
 export const SKIER_JUMP_5 = 'skierJump5';
 export const RAMP = 'ramp';
-export const RHINO_DELAY = 0;
+export const RHINO_DELAY = 300;
 export const RHINO_DEFAULT = 'rhinoDefault';
 export const RHINO_RUN_LEFT = 'rhinoRunLeft';
 export const RHINO_RUN_LEFT_2 = 'rhinoRunLeft2';
@@ -31,7 +31,7 @@ export const RHINO_EAT_4 ='rhinoEat4';
 export const SKIER_STARTING_SPEED = 10;
 export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
 
-export const RHINO_STARTING_SPEED = 10;
+export const RHINO_STARTING_SPEED = 12;
 export const RHINO_TURN_SPEED_REDUCER = 2;
 export const RHINO_POSITION_OFFSET = 200;
 export const RHINO_TURN_TIME = 50;
