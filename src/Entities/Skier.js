@@ -8,7 +8,7 @@ export class Skier extends Entity {
 
     direction = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.SKIER_STARTING_SPEED;
-    jump  = Constants.SKIER_JUMP.END;
+    jump  = Constants.SKIER_JUMP.JUMP_5;
     rhinoDelay = Constants.RHINO_DELAY;
     eaten = false;
 
@@ -39,19 +39,26 @@ export class Skier extends Entity {
                     break;
             }
 
-            if (this.jump === Constants.SKIER_JUMP.END) {
-                this.setDirection(this.direction);
-            }
-            else {
-                this.jump--;
-                if ((this.jump < Constants.SKIER_JUMP.START) && (this.jump >= Constants.SKIER_JUMP.FLIP_1))
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_1];
-                else if ((this.jump < Constants.SKIER_JUMP.FLIP_1) && (this.jump >= Constants.SKIER_JUMP.FLIP_2))
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_2];
-                if ((this.jump < Constants.SKIER_JUMP.FLIP_2) && (this.jump >= Constants.SKIER_JUMP.FLIP_3))
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_3];
-                if ((this.jump < Constants.SKIER_JUMP.FLIP_3) && (this.jump >= Constants.SKIER_JUMP.END))
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.END];
+            if (this.jump > 0) this.jump--;
+            switch(this.jump) {
+                case Constants.SKIER_JUMP.JUMP_1:
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_1];
+                    break;
+                case Constants.SKIER_JUMP.JUMP_2:
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_2];
+                    break;
+                case Constants.SKIER_JUMP.JUMP_3:
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_3];
+                    break;
+                case Constants.SKIER_JUMP.JUMP_4:
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_4];
+                    break;
+                case Constants.SKIER_JUMP.JUMP_5:
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_5];
+                    break;
+                case 0:
+                    this.setDirection(this.direction);
+                    break;
             }
 
             if (this.rhinoDelay > 0) {
@@ -123,7 +130,7 @@ export class Skier extends Entity {
     }
 
     jumpUp() {
-        this.jump = Constants.SKIER_JUMP.START;
+        this.jump = Constants.SKIER_JUMP.JUMP_1;
         this.assetName = Constants.SKIER_JUMP_ASSET[this.jump];
     }
 
@@ -158,7 +165,7 @@ export class Skier extends Entity {
 
     isJumping()
     {
-        return this.jump !== Constants.SKIER_JUMP.END;
+        return this.jump !== Constants.SKIER_JUMP.JUMP_5;
     }
 
     isRhinoChasing()

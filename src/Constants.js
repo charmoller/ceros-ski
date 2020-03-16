@@ -76,11 +76,11 @@ export const SKIER_DIRECTIONS = {
 };
 
 export const SKIER_JUMP = {
-    START : 80,
-    FLIP_1 : 60,
-    FLIP_2 : 40,
-    FLIP_3 : 20,
-    END : 0
+    JUMP_1 : 100,
+    JUMP_2 : 80,
+    JUMP_3 : 60,
+    JUMP_4 : 40,
+    JUMP_5 : 20
 };
 
 export const RHINO_RUN = {
@@ -107,11 +107,11 @@ export const SKIER_DIRECTION_ASSET = {
 };
 
 export const SKIER_JUMP_ASSET = {
-    [SKIER_JUMP.START] : SKIER_JUMP_1,
-    [SKIER_JUMP.FLIP_1] : SKIER_JUMP_2,
-    [SKIER_JUMP.FLIP_2] : SKIER_JUMP_3,
-    [SKIER_JUMP.FLIP_3] : SKIER_JUMP_4,
-    [SKIER_JUMP.END] : SKIER_JUMP_5
+    [SKIER_JUMP.JUMP_1] : SKIER_JUMP_1,
+    [SKIER_JUMP.JUMP_2] : SKIER_JUMP_2,
+    [SKIER_JUMP.JUMP_3] : SKIER_JUMP_3,
+    [SKIER_JUMP.JUMP_4] : SKIER_JUMP_4,
+    [SKIER_JUMP.JUMP_5] : SKIER_JUMP_5
 };
 
 export const RHINO_RUN_ASSET = {

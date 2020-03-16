@@ -75,7 +75,7 @@ export class Rhino extends Entity {
         else return false;
     }
 
-   setTurning() {
+    setTurning() {
         this.turning = Constants.RHINO_TURN_TIME;
     }
 
@@ -121,5 +121,9 @@ export class Rhino extends Entity {
             this.eatingInterval = Constants.RHINO_EAT_TIME;
             if (this.eatingAsset > 0) this.eatingAsset--;
         }
+    }
+
+    animate() {
+
     }
 }
