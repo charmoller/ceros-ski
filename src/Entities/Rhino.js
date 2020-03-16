@@ -53,7 +53,7 @@ export class Rhino extends Entity {
     }
 
    setTurning() {
-        this.turning = 50;
+        this.turning = Constants.RHINO_TURN_TIME;
     }
 
     getSpeed() {
