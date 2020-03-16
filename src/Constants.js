@@ -36,7 +36,6 @@ export const RHINO_TURN_SPEED_REDUCER = 2;
 export const RHINO_POSITION_OFFSET = 200;
 export const RHINO_TURN_TIME = 50;
 export const RHINO_RUNNING_ANIMATE = 20;
-export const RHINO_EAT_TIME = 50;
 
 export const ASSETS = {
     [SKIER_CRASH]: 'img/skier_crash.png',

@@ -9,6 +9,7 @@ import {Rhino} from "../Entities/Rhino";
 export class Game {
     gameWindow = null;
     rhino = undefined;
+    rhinoDelay = Constants.RHINO_DELAY;
 
     constructor() {
         this.assetManager = new AssetManager();
@@ -68,14 +69,13 @@ export class Game {
     }
 
     displayRhino() {
-        if(this.skier.isRhinoChasing()) {
-            if (this.rhino === undefined) {
+        if(this.skier.numberOfMoves >= this.rhinoDelay) {
+            if(this.rhino === undefined) {
                 this.rhino = new Rhino(this.skier.x, this.skier.y -  Constants.RHINO_POSITION_OFFSET, this.skier.direction);
             }
 
             this.rhino.chase(this.skier);
             this.skier.eaten = this.rhino.checkIfRhinoCaughtSkier(this.skier, this.assetManager);
-
         }
     }
 

@@ -9,11 +9,11 @@ export class Skier extends Entity {
     direction = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.SKIER_STARTING_SPEED;
     jump  = Constants.SKIER_JUMP.JUMP_5;
-    rhinoDelay = Constants.RHINO_DELAY;
     eaten = false;
 
     constructor(x, y) {
         super(x, y);
+        this.numberOfMoves = 0;
     }
 
     setDirection(direction) {
@@ -41,9 +41,7 @@ export class Skier extends Entity {
 
             this.jump = this.animate(this.jump, Constants.SKIER_JUMP_ASSET, Constants.SKIER_JUMP);
 
-            if (this.rhinoDelay > 0) {
-                this.rhinoDelay--;
-            }
+            this.numberOfMoves++;
         }
     }
 
@@ -146,11 +144,6 @@ export class Skier extends Entity {
     isJumping()
     {
         return this.jump !== Constants.SKIER_JUMP.JUMP_5;
-    }
-
-    isRhinoChasing()
-    {
-        return this.rhinoDelay === 0;
     }
 
     isEaten()
