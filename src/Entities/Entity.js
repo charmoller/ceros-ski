@@ -27,4 +27,19 @@ export class Entity {
 
         canvas.drawImage(asset, drawX, drawY, asset.width, asset.height);
     }
+
+    animate(move, assets, animateDetails) {
+        if (move === 0) {
+            this.setDirection(this.direction);
+        }
+        else {
+            const changeAsset = Object.keys(animateDetails).find(k => animateDetails[k]===move);
+            if (changeAsset !== undefined) {
+                this.assetName = assets[animateDetails[changeAsset]];
+            }
+            move--;
+        }
+
+        return move;
+    }
 }

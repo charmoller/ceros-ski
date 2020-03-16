@@ -39,27 +39,12 @@ export class Skier extends Entity {
                     break;
             }
 
-            this.jump = this.animateJump(this.jump, Constants.SKIER_JUMP_ASSET, Constants.SKIER_JUMP);
+            this.jump = this.animate(this.jump, Constants.SKIER_JUMP_ASSET, Constants.SKIER_JUMP);
 
             if (this.rhinoDelay > 0) {
                 this.rhinoDelay--;
             }
         }
-    }
-
-    animateJump(move, assets, animateDetails) {
-        if (move === 0) {
-            this.setDirection(this.direction);
-        }
-        else {
-            const changeAsset = Object.keys(animateDetails).find(k => animateDetails[k]===move);
-            if (changeAsset !== undefined) {
-                this.assetName = assets[animateDetails[changeAsset]];
-            }
-            move--;
-        }
-
-        return move;
     }
 
     moveSkierLeft() {
