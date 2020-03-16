@@ -20,6 +20,7 @@ export const RAMP = 'ramp';
 export const RHINO_DELAY = 0;
 export const RHINO_DEFAULT = 'rhinoDefault';
 export const RHINO_RUN_LEFT = 'rhinoRunLeft';
+export const RHINO_RUN_LEFT_2 = 'rhinoRunLeft2';
 
 export const SKIER_STARTING_SPEED = 10;
 export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
@@ -28,6 +29,7 @@ export const RHINO_STARTING_SPEED = 10;
 export const RHINO_TURN_SPEED_REDUCER = 2;
 export const RHINO_POSITION_OFFSET = 200;
 export const RHINO_TURN_TIME = 50;
+export const RHINO_RUNNING_ANIMATE = 20;
 
 export const ASSETS = {
     [SKIER_CRASH]: 'img/skier_crash.png',
@@ -48,6 +50,7 @@ export const ASSETS = {
     [RAMP] : 'img/jump_ramp.png',
     [RHINO_DEFAULT] : 'img/rhino_default.png',
     [RHINO_RUN_LEFT] : 'img/rhino_run_left.png',
+    [RHINO_RUN_LEFT_2] : 'img/rhino_run_left_2.png',
 };
 
 export const SKIER_DIRECTIONS = {
@@ -67,6 +70,11 @@ export const SKIER_JUMP = {
     END : 0
 };
 
+export const RHINO_RUN = {
+    RUN_1 : 0,
+    RUN_2 : 1
+};
+
 export const SKIER_DIRECTION_ASSET = {
     [SKIER_DIRECTIONS.CRASH] : SKIER_CRASH,
     [SKIER_DIRECTIONS.LEFT] : SKIER_LEFT,
@@ -81,7 +89,12 @@ export const SKIER_JUMP_ASSET = {
     [SKIER_JUMP.FLIP_1] : SKIER_JUMP_2,
     [SKIER_JUMP.FLIP_2] : SKIER_JUMP_3,
     [SKIER_JUMP.FLIP_3] : SKIER_JUMP_4,
-    [SKIER_JUMP.END] : SKIER_JUMP_5,
+    [SKIER_JUMP.END] : SKIER_JUMP_5
+};
+
+export const RHINO_RUN_ASSET = {
+    [RHINO_RUN.RUN_1] : RHINO_RUN_LEFT,
+    [RHINO_RUN.RUN_2] : RHINO_RUN_LEFT_2
 };
 
 export const KEYS = {
