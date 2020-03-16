@@ -15,11 +15,11 @@ export class Rhino extends Entity {
     runningInterval = Constants.RHINO_RUNNING_ANIMATE;
     eating = false;
     eatingAnimate = Constants.RHINO_EAT.LIFT;
+    runningAnimate = Constants.RHINO_RUNNING_ANIMATE;
 
     constructor(x, y, direction) {
         super(x, y);
         this.setDirection(direction);
-        this.assetName = Constants.RHINO_RUN_ASSET[RHINO_RUN.RUN_1];
         this.runningAsset = Constants.RHINO_RUN.RUN_1;
     }
 
@@ -66,7 +66,10 @@ export class Rhino extends Entity {
                 }
             }
 
-            this.updateAsset();
+            this.runningAnimate = this.animate(this.runningAnimate, Constants.RHINO_RUN_ASSET, Constants.RHINO_RUN);
+            if (this.runningAnimate === 0) {
+                this.runningAnimate = Constants.RHINO_RUNNING_ANIMATE;
+            }
         }
 
     }
@@ -133,6 +136,5 @@ export class Rhino extends Entity {
 
     eatSkier() {
         this.eatingAnimate = this.animate(this.eatingAnimate, Constants.RHINO_EAT_ASSET, Constants.RHINO_EAT);
-    }
     }
 }
