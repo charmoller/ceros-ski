@@ -12,7 +12,6 @@ export class Rhino extends Entity {
     direction = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.RHINO_STARTING_SPEED;
     turning = 0;
-    runningInterval = Constants.RHINO_RUNNING_ANIMATE;
     eating = false;
     eatingAnimate = Constants.RHINO_EAT.LIFT;
     runningAnimate = Constants.RHINO_RUNNING_ANIMATE;
@@ -67,7 +66,7 @@ export class Rhino extends Entity {
             }
 
             this.runningAnimate = this.animate(this.runningAnimate, Constants.RHINO_RUN_ASSET, Constants.RHINO_RUN);
-            if (this.runningAnimate === 0) {
+            if(this.runningAnimate === 0) {
                 this.runningAnimate = Constants.RHINO_RUNNING_ANIMATE;
             }
         }
