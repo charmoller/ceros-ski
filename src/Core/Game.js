@@ -51,7 +51,7 @@ export class Game {
     drawGameWindow() {
         this.canvas.setDrawOffset(this.gameWindow.left, this.gameWindow.top);
 
-        this.skier.draw(this.canvas, this.assetManager);
+        if (!this.skier.eaten) this.skier.draw(this.canvas, this.assetManager);
         if (this.rhino !== undefined) {
             this.rhino.draw(this.canvas, this.assetManager);
         }
@@ -73,7 +73,9 @@ export class Game {
                 this.rhino = new Rhino(this.skier.x, this.skier.y -  Constants.RHINO_POSITION_OFFSET, this.skier.direction);
             }
 
-            this.rhino.chase(this.skier.x, this.skier.y, this.skier.direction);
+            this.rhino.chase(this.skier);
+            this.skier.eaten = this.rhino.checkIfRhinoCaughtSkier(this.skier, this.assetManager);
+
         }
     }
 

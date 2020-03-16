@@ -10,6 +10,7 @@ export class Skier extends Entity {
     speed = Constants.SKIER_STARTING_SPEED;
     jump  = Constants.SKIER_JUMP.END;
     rhinoDelay = Constants.RHINO_DELAY;
+    eaten = false;
 
     constructor(x, y) {
         super(x, y);
@@ -25,35 +26,37 @@ export class Skier extends Entity {
     }
 
     move() {
-        switch(this.direction) {
-            case Constants.SKIER_DIRECTIONS.LEFT_DOWN:
-                this.moveSkierLeftDown();
-                break;
-            case Constants.SKIER_DIRECTIONS.DOWN:
-                this.moveSkierDown();
-                break;
-            case Constants.SKIER_DIRECTIONS.RIGHT_DOWN:
-                this.moveSkierRightDown();
-                break;
-        }
+        if (!this.isEaten()) {
+            switch(this.direction) {
+                case Constants.SKIER_DIRECTIONS.LEFT_DOWN:
+                    this.moveSkierLeftDown();
+                    break;
+                case Constants.SKIER_DIRECTIONS.DOWN:
+                    this.moveSkierDown();
+                    break;
+                case Constants.SKIER_DIRECTIONS.RIGHT_DOWN:
+                    this.moveSkierRightDown();
+                    break;
+            }
 
-        if (this.jump === Constants.SKIER_JUMP.END) {
-            this.setDirection(this.direction);
-        }
-        else {
-            this.jump--;
-            if ((this.jump < Constants.SKIER_JUMP.START) && (this.jump >= Constants.SKIER_JUMP.FLIP_1))
-                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_1];
-            else if ((this.jump < Constants.SKIER_JUMP.FLIP_1) && (this.jump >= Constants.SKIER_JUMP.FLIP_2))
-                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_2];
-            if ((this.jump < Constants.SKIER_JUMP.FLIP_2) && (this.jump >= Constants.SKIER_JUMP.FLIP_3))
-                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_3];
-            if ((this.jump < Constants.SKIER_JUMP.FLIP_3) && (this.jump >= Constants.SKIER_JUMP.END))
-                this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.END];
-        }
+            if (this.jump === Constants.SKIER_JUMP.END) {
+                this.setDirection(this.direction);
+            }
+            else {
+                this.jump--;
+                if ((this.jump < Constants.SKIER_JUMP.START) && (this.jump >= Constants.SKIER_JUMP.FLIP_1))
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_1];
+                else if ((this.jump < Constants.SKIER_JUMP.FLIP_1) && (this.jump >= Constants.SKIER_JUMP.FLIP_2))
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_2];
+                if ((this.jump < Constants.SKIER_JUMP.FLIP_2) && (this.jump >= Constants.SKIER_JUMP.FLIP_3))
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.FLIP_3];
+                if ((this.jump < Constants.SKIER_JUMP.FLIP_3) && (this.jump >= Constants.SKIER_JUMP.END))
+                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.END];
+            }
 
-        if (this.rhinoDelay > 0) {
-            this.rhinoDelay--;
+            if (this.rhinoDelay > 0) {
+                this.rhinoDelay--;
+            }
         }
     }
 
@@ -163,9 +166,8 @@ export class Skier extends Entity {
         return this.rhinoDelay === 0;
     }
 
-    isOnRight(x)
+    isEaten()
     {
-        if (this.x > x) return true;
-        else return false;
-   }
+        return this.eaten;
+    }
 }

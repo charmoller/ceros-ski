@@ -21,6 +21,12 @@ export const RHINO_DELAY = 0;
 export const RHINO_DEFAULT = 'rhinoDefault';
 export const RHINO_RUN_LEFT = 'rhinoRunLeft';
 export const RHINO_RUN_LEFT_2 = 'rhinoRunLeft2';
+export const RHINO_LIFT = 'rhinoLift';
+export const RHINO_LIFT_MOUTH_OPEN ='rhinoLiftMouthOpen';
+export const RHINO_EAT_1 ='rhinoEat1';
+export const RHINO_EAT_2 ='rhinoEat2';
+export const RHINO_EAT_3 ='rhinoEat3';
+export const RHINO_EAT_4 ='rhinoEat4';
 
 export const SKIER_STARTING_SPEED = 10;
 export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
@@ -30,6 +36,7 @@ export const RHINO_TURN_SPEED_REDUCER = 2;
 export const RHINO_POSITION_OFFSET = 200;
 export const RHINO_TURN_TIME = 50;
 export const RHINO_RUNNING_ANIMATE = 20;
+export const RHINO_EAT_TIME = 50;
 
 export const ASSETS = {
     [SKIER_CRASH]: 'img/skier_crash.png',
@@ -51,6 +58,12 @@ export const ASSETS = {
     [RHINO_DEFAULT] : 'img/rhino_default.png',
     [RHINO_RUN_LEFT] : 'img/rhino_run_left.png',
     [RHINO_RUN_LEFT_2] : 'img/rhino_run_left_2.png',
+    [RHINO_LIFT] : 'img/rhino_lift.png',
+    [RHINO_LIFT_MOUTH_OPEN] : 'img/rhino_lift_mouth_open.png',
+    [RHINO_EAT_1] : 'img/rhino_lift_eat_1.png',
+    [RHINO_EAT_2] : 'img/rhino_lift_eat_2.png',
+    [RHINO_EAT_3] : 'img/rhino_lift_eat_3.png',
+    [RHINO_EAT_4] : 'img/rhino_lift_eat_4.png',
 };
 
 export const SKIER_DIRECTIONS = {
@@ -75,6 +88,15 @@ export const RHINO_RUN = {
     RUN_2 : 1
 };
 
+export const RHINO_EAT = {
+    LIFT : 5,
+    LIFT_MOUTH_OPEN : 4,
+    EAT_1 : 3,
+    EAT_2 : 2,
+    EAT_3 : 1,
+    EAT_4 : 0
+};
+
 export const SKIER_DIRECTION_ASSET = {
     [SKIER_DIRECTIONS.CRASH] : SKIER_CRASH,
     [SKIER_DIRECTIONS.LEFT] : SKIER_LEFT,
@@ -95,6 +117,15 @@ export const SKIER_JUMP_ASSET = {
 export const RHINO_RUN_ASSET = {
     [RHINO_RUN.RUN_1] : RHINO_RUN_LEFT,
     [RHINO_RUN.RUN_2] : RHINO_RUN_LEFT_2
+};
+
+export const RHINO_EAT_ASSET = {
+    [RHINO_EAT.LIFT] : RHINO_LIFT,
+    [RHINO_EAT.LIFT_MOUTH_OPEN] : RHINO_LIFT_MOUTH_OPEN,
+    [RHINO_EAT.EAT_1] : RHINO_EAT_1,
+    [RHINO_EAT.EAT_2] : RHINO_EAT_2,
+    [RHINO_EAT.EAT_3] : RHINO_EAT_3,
+    [RHINO_EAT.EAT_4] : RHINO_EAT_4
 };
 
 export const KEYS = {
