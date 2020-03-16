@@ -19,8 +19,7 @@ export class Obstacle extends Entity {
     }
 
     isRock() {
-        if ((this.assetName === Constants.ROCK1) || (this.assetName === Constants.ROCK2)) return true;
-        else return false;
+        return (this.assetName === Constants.ROCK1) || (this.assetName === Constants.ROCK2);
     }
 
     isRamp() {

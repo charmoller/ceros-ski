@@ -37,24 +37,34 @@ export class Rhino extends Entity {
         else {
             this.setDirection(skier.direction);
 
-            if (this.isChangingDirection()) this.setTurning();
+            if (this.isChangingDirection()) {
+                this.setTurning();
+            }
 
             if (skier.x < this.x) {
                 this.x -= this.getSpeed();
-                if (this.x < skier.x) this.x = skier.x;
+                if (this.x < skier.x) {
+                    this.x = skier.x;
+                }
             }
             else if (skier.x > this.x) {
                 this.x += this.getSpeed();
-                if (this.x > skier.x) this.x = skier.x;
+                if (this.x > skier.x) {
+                    this.x = skier.x;
+                }
             }
 
             if (skier.y < this.y) {
                 this.y -= this.getSpeed();
-                if (this.y < skier.y) this.y = skier.y;
+                if (this.y < skier.y) {
+                    this.y = skier.y;
+                }
             }
             else if (skier.y > this.y) {
                 this.y += this.getSpeed();
-                if (this.y > skier.y) this.y = skier.y;
+                if (this.y > skier.y) {
+                    this.y = skier.y;
+                }
             }
 
             this.updateAsset();
@@ -63,16 +73,24 @@ export class Rhino extends Entity {
     }
 
     updateAsset() {
-        if (this.runningInterval === 0)  this.runningAsset = 1 - this.runningAsset;
+        if(this.runningInterval === 0)  {
+            this.runningAsset = 1 - this.runningAsset;
+        }
         this.assetName = Constants.RHINO_RUN_ASSET[this.runningAsset];
 
-        if (this.runningInterval > 0) this.runningInterval--;
+        if(this.runningInterval > 0) {
+            this.runningInterval--;
+        }
         else this.runningInterval = Constants.RHINO_RUNNING_ANIMATE;
     }
 
     isChangingDirection() {
-        if(this.previousDirection !== this.direction) return true;
-        else return false;
+        if(this.previousDirection !== this.direction) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     setTurning() {
@@ -116,14 +134,14 @@ export class Rhino extends Entity {
 
     eatSkier() {
         this.assetName = Constants.RHINO_EAT_ASSET[this.eatingAsset];
-        if (this.eatingInterval > 0) this.eatingInterval--;
+        if(this.eatingInterval > 0) {
+            this.eatingInterval--;
+        }
         else {
             this.eatingInterval = Constants.RHINO_EAT_TIME;
-            if (this.eatingAsset > 0) this.eatingAsset--;
+            if(this.eatingAsset > 0) {
+                this.eatingAsset--;
+            }
         }
-    }
-
-    animate() {
-
     }
 }
