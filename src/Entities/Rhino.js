@@ -74,18 +74,6 @@ export class Rhino extends Entity {
 
     }
 
-    updateAsset() {
-        if(this.runningInterval === 0)  {
-            this.runningAsset = 1 - this.runningAsset;
-        }
-        this.assetName = Constants.RHINO_RUN_ASSET[this.runningAsset];
-
-        if(this.runningInterval > 0) {
-            this.runningInterval--;
-        }
-        else this.runningInterval = Constants.RHINO_RUNNING_ANIMATE;
-    }
-
     isChangingDirection() {
         if(this.previousDirection !== this.direction) {
             return true;
