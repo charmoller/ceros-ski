@@ -39,32 +39,27 @@ export class Skier extends Entity {
                     break;
             }
 
-            if (this.jump > 0) this.jump--;
-            switch(this.jump) {
-                case Constants.SKIER_JUMP.JUMP_1:
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_1];
-                    break;
-                case Constants.SKIER_JUMP.JUMP_2:
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_2];
-                    break;
-                case Constants.SKIER_JUMP.JUMP_3:
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_3];
-                    break;
-                case Constants.SKIER_JUMP.JUMP_4:
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_4];
-                    break;
-                case Constants.SKIER_JUMP.JUMP_5:
-                    this.assetName = Constants.SKIER_JUMP_ASSET[Constants.SKIER_JUMP.JUMP_5];
-                    break;
-                case 0:
-                    this.setDirection(this.direction);
-                    break;
-            }
+            this.jump = this.animateJump(this.jump, Constants.SKIER_JUMP_ASSET, Constants.SKIER_JUMP);
 
             if (this.rhinoDelay > 0) {
                 this.rhinoDelay--;
             }
         }
+    }
+
+    animateJump(move, assets, animateDetails) {
+        if (move === 0) {
+            this.setDirection(this.direction);
+        }
+        else {
+            const changeAsset = Object.keys(animateDetails).find(k => animateDetails[k]===move);
+            if (changeAsset !== undefined) {
+                this.assetName = assets[animateDetails[changeAsset]];
+            }
+            move--;
+        }
+
+        return move;
     }
 
     moveSkierLeft() {
