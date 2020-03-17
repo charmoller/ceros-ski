@@ -2,8 +2,6 @@ import "babel-polyfill";
 import {Rhino} from "../Entities/Rhino";
 import * as Constants from "../Constants";
 import {SKIER_DIRECTIONS} from "../Constants";
-import {RHINO_RUN} from "../Constants";
-import {RHINO_EAT} from "../Constants";
 import {Skier} from "../Entities/Skier";
 
 test('Create new rhino object', () => {

@@ -1,10 +1,6 @@
 import * as Constants from "../Constants";
 import { Entity } from "./Entity";
 import { intersectTwoRects, Rect } from "../Core/Utils";
-import {SKIER_DIRECTIONS} from "../Constants";
-import {RHINO_DEFAULT} from "../Constants";
-import {RHINO_RUN} from "../Constants";
-import {RHINO_EAT} from "../Constants";
 
 /**
  * Rhino Entity
@@ -58,6 +54,7 @@ export class Rhino extends Entity {
                 this.setTurning();
             }
 
+            // Move towards the skier
             if (skier.x < this.x) {
                 this.x -= this.getSpeed();
                 if (this.x < skier.x) {

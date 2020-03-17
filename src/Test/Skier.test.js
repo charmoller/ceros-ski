@@ -1,7 +1,6 @@
 import "babel-polyfill";
 import {Skier} from "../Entities/Skier";
 import * as Constants from "../Constants";
-import {SKIER_JUMP_1} from "../Constants";
 
 test('Create new skier object', () => {
     const newSkier = new Skier(0, 0);
