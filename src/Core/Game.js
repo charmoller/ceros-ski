@@ -115,6 +115,10 @@ export class Game {
         }
     }
 
+    isOver() {
+        return this.skier.eaten;
+    }
+
     /**
      * Handle Key presses for turn left, turn right, turn up, turn down, and jump. If the skier has been eaten,
      * no longer react to key presses.
