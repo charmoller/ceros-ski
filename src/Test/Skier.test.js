@@ -5,16 +5,24 @@ import {SKIER_JUMP_1} from "../Constants";
 
 test('Create new skier object', () => {
     const newSkier = new Skier(0, 0);
-    expect(newSkier).toEqual({assetName: Constants.SKIER_DOWN, direction: Constants.SKIER_DIRECTIONS.DOWN, eaten: false, jump: Constants.SKIER_JUMP.JUMP_5, speed: Constants.SKIER_STARTING_SPEED, numberOfMoves: 0, x: 0, y: 0});
+    expect(newSkier).toEqual({assetName: Constants.SKIER_DOWN, direction: Constants.SKIER_DIRECTIONS.DOWN, eaten: false, jump: 0, speed: Constants.SKIER_STARTING_SPEED, numberOfMoves: 0, x: 0, y: 0});
     expect(newSkier.isJumping()).toBe(false);
 });
 
 test('Crash skier then turn left', () => {
     const crashSkier = new Skier(0, 0);
     crashSkier.setDirection(Constants.SKIER_DIRECTIONS.CRASH);
-    expect(crashSkier).toEqual({assetName: Constants.SKIER_CRASH, direction: Constants.SKIER_DIRECTIONS.CRASH, eaten: false, jump: Constants.SKIER_JUMP.JUMP_5, speed: Constants.SKIER_STARTING_SPEED, numberOfMoves: 0, x: 0, y: 0});
+    expect(crashSkier).toEqual({assetName: Constants.SKIER_CRASH, direction: Constants.SKIER_DIRECTIONS.CRASH, eaten: false, jump: 0, speed: Constants.SKIER_STARTING_SPEED, numberOfMoves: 0, x: 0, y: 0});
     crashSkier.turnLeft();
-    expect(crashSkier).toEqual({assetName: Constants.SKIER_LEFT, direction: Constants.SKIER_DIRECTIONS.LEFT, eaten: false, jump: Constants.SKIER_JUMP.JUMP_5, speed: Constants.SKIER_STARTING_SPEED, numberOfMoves: 0, x: -Constants.SKIER_STARTING_SPEED, y: 0});
+    expect(crashSkier).toEqual({assetName: Constants.SKIER_LEFT, direction: Constants.SKIER_DIRECTIONS.LEFT, eaten: false, jump: 0, speed: Constants.SKIER_STARTING_SPEED, numberOfMoves: 0, x: -Constants.SKIER_STARTING_SPEED, y: 0});
+});
+
+test('Crash skier then turn right', () => {
+    const crashSkier = new Skier(0, 0);
+    crashSkier.setDirection(Constants.SKIER_DIRECTIONS.CRASH);
+    expect(crashSkier).toEqual({assetName: Constants.SKIER_CRASH, direction: Constants.SKIER_DIRECTIONS.CRASH, eaten: false, jump: 0, speed: Constants.SKIER_STARTING_SPEED, numberOfMoves: 0, x: 0, y: 0});
+    crashSkier.turnRight();
+    expect(crashSkier).toEqual({assetName: Constants.SKIER_RIGHT, direction: Constants.SKIER_DIRECTIONS.RIGHT, eaten: false, jump: 0, speed: Constants.SKIER_STARTING_SPEED, numberOfMoves: 0, x: Constants.SKIER_STARTING_SPEED, y: 0});
 });
 
 test('Jump skier', () => {
