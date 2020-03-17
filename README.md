@@ -66,4 +66,15 @@ The following new features and feature enhancements have been implemented.
 
 ## Known Bugs
 
-  * The asset manager load asset unit tests are not functioning and have been disabled. 
+  * The asset manager load asset unit tests are not functioning and have been disabled.
+  
+## Future Improvements
+  
+  The following are future improvements I would like to make to the implementation:
+  * Enhance the rhino chase algorithm. For example, make the rhino look like it's actually slowly turning or
+  re-implement a more complex chase algorithm.
+  * Mock the loading assets in unit tests so can implement more tests of the game and asset manager. 
+  * Either make the rhino go around obstacles or leave as now where the rhino goes through obstacles but
+  implement animations that show the obstacles being smashed.
+  
+   
