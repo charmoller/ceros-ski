@@ -14,12 +14,11 @@ export class Rhino extends Entity {
     turning = 0;
     eating = false;
     eatingAnimate = Constants.RHINO_EAT.LIFT;
-    runningAnimate = Constants.RHINO_RUNNING_ANIMATE;
+    runningAnimate = Constants.RHINO_RUN.RUN_1;
 
     constructor(x, y, direction) {
         super(x, y);
         this.setDirection(direction);
-        this.runningAsset = Constants.RHINO_RUN.RUN_1;
     }
 
     setDirection(direction) {
@@ -67,7 +66,7 @@ export class Rhino extends Entity {
 
             this.runningAnimate = this.animate(this.runningAnimate, Constants.RHINO_RUN_ASSET, Constants.RHINO_RUN);
             if(this.runningAnimate === 0) {
-                this.runningAnimate = Constants.RHINO_RUNNING_ANIMATE;
+                this.runningAnimate = Constants.RHINO_RUN.RUN_1;
             }
         }
 

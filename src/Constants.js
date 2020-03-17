@@ -33,9 +33,7 @@ export const SKIER_DIAGONAL_SPEED_REDUCER = 1.4142;
 
 export const RHINO_STARTING_SPEED = 12;
 export const RHINO_TURN_SPEED_REDUCER = 2;
-export const RHINO_POSITION_OFFSET = 200;
 export const RHINO_TURN_TIME = 50;
-export const RHINO_RUNNING_ANIMATE = 20;
 
 export const ASSETS = {
     [SKIER_CRASH]: 'img/skier_crash.png',
@@ -83,8 +81,8 @@ export const SKIER_JUMP = {
 };
 
 export const RHINO_RUN = {
-    RUN_1 : 0,
-    RUN_2 : 1
+    RUN_1 : 30,
+    RUN_2 : 15
 };
 
 export const RHINO_EAT = {

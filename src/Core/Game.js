@@ -71,7 +71,7 @@ export class Game {
     displayRhino() {
         if(this.skier.numberOfMoves >= this.rhinoDelay) {
             if(this.rhino === undefined) {
-                this.rhino = new Rhino(this.skier.x, this.skier.y -  Constants.RHINO_POSITION_OFFSET, this.skier.direction);
+                this.rhino = new Rhino(this.skier.x, this.skier.y - (Constants.GAME_HEIGHT / 2), this.skier.direction);
             }
 
             this.rhino.chase(this.skier);
