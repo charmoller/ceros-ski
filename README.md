@@ -53,7 +53,7 @@ The following new features and feature enhancements have been implemented.
 
   * Jump the skier by pressing the spacebar or when teh skier hits a ramp.
   * The skier can jump rocks but not trees
-  * When the skier is jumping they execute a trick flip
+  * The skier executes a trick flip while jumping
      
 ####Rhino Chase
 
