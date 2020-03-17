@@ -75,6 +75,6 @@ The following new features and feature enhancements have been implemented.
   re-implement a more complex chase algorithm.
   * Mock the loading assets in unit tests so can implement more tests of the game and asset manager. 
   * Either make the rhino go around obstacles or leave as now where the rhino goes through obstacles but
-  implement animations that show the obstacles being smashed.
+  implement animations that shows the obstacles being smashed.
   
    
