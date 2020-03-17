@@ -11,12 +11,12 @@ npm install
 npm run dev
 ```
 
-##Implementation
+## Implementation
 
 The base code design/architecture was left essentially intact. The following bug fixes and enhancements were added.
 
-###Bug Fixes
-####Bug Fix: Crash Skier and Go Left triggers blank screen
+### Bug Fixes
+#### Bug Fix: Crash Skier and Go Left triggers blank screen
 
   * Steps to Reproduce:
     1. Load the game
@@ -32,7 +32,7 @@ The base code design/architecture was left essentially intact. The following bug
   exist to make the code easier to debug for potential future bugs of this type, and a unit test for this feature
   has been added.
   
-###Unit tests
+### Unit tests
 
   Unit Tests have been implemented in Jest. The code coverage of the unit tests for all files is;
   * Statements 43.54%
@@ -45,17 +45,17 @@ The base code design/architecture was left essentially intact. The following bug
   * Rhino Eat Skier
   * Jump Skier
   
-###Features
+### Features
 
 The following new features and feature enhancements have been implemented.
 
-####Jump Skier
+#### Jump Skier
 
   * Jump the skier by pressing the spacebar or when teh skier hits a ramp.
   * The skier can jump rocks but not trees
   * The skier executes a trick flip while jumping
      
-####Rhino Chase
+#### Rhino Chase
 
   * A Rhino appears after a set number of skier moves and chases the skier. 
   * The Rhino is animated using the rhino running assets. 
@@ -64,4 +64,4 @@ The following new features and feature enhancements have been implemented.
   moves before it speeds up again.
   * The Rhino can move through obstacles.
 
-##Known Bugs
+## Known Bugs
