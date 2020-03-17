@@ -8,7 +8,7 @@ export class Skier extends Entity {
 
     direction = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.SKIER_STARTING_SPEED;
-    jump  = Constants.SKIER_JUMP.JUMP_5;
+    jump  = 0;
     eaten = false;
 
     constructor(x, y) {
@@ -72,6 +72,10 @@ export class Skier extends Entity {
     }
 
     turnLeft() {
+        if (this.isJumping()) {
+            return;
+        }
+
         if(this.direction === Constants.SKIER_DIRECTIONS.LEFT) {
             this.moveSkierLeft();
         }
@@ -85,6 +89,10 @@ export class Skier extends Entity {
     }
 
     turnRight() {
+        if (this.isJumping()) {
+            return;
+        }
+
         if(this.direction === Constants.SKIER_DIRECTIONS.RIGHT) {
             this.moveSkierRight();
         }
@@ -98,12 +106,20 @@ export class Skier extends Entity {
     }
 
     turnUp() {
+        if (this.isJumping()) {
+            return;
+        }
+
         if(this.direction === Constants.SKIER_DIRECTIONS.LEFT || this.direction === Constants.SKIER_DIRECTIONS.RIGHT) {
             this.moveSkierUp();
         }
     }
 
     turnDown() {
+        if (this.isJumping()) {
+            return;
+        }
+
         this.setDirection(Constants.SKIER_DIRECTIONS.DOWN);
     }
 
@@ -143,7 +159,7 @@ export class Skier extends Entity {
 
     isJumping()
     {
-        return this.jump !== Constants.SKIER_JUMP.JUMP_5;
+        return this.jump !== 0;
     }
 
     isEaten()
