@@ -65,3 +65,5 @@ The following new features and feature enhancements have been implemented.
   * The Rhino can move through obstacles.
 
 ## Known Bugs
+
+  * The asset manager load asset unit tests are not functioning and have been disabled. 
