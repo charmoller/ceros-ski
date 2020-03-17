@@ -6,6 +6,9 @@ import {RHINO_DEFAULT} from "../Constants";
 import {RHINO_RUN} from "../Constants";
 import {RHINO_EAT} from "../Constants";
 
+/**
+ * Rhino Entity
+ */
 export class Rhino extends Entity {
     assetName = Constants.RHINO_DEFAULT;
 
@@ -16,24 +19,41 @@ export class Rhino extends Entity {
     eatingAnimate = Constants.RHINO_EAT.LIFT;
     runningAnimate = Constants.RHINO_RUN.RUN_1;
 
+    /**
+     * Create new rhino
+     * @param x
+     * @param y
+     * @param direction
+     */
     constructor(x, y, direction) {
         super(x, y);
         this.setDirection(direction);
     }
 
+    /**
+     * Set the rhino current and previous direction
+     * @param direction
+     */
     setDirection(direction) {
         this.previousDirection = this.direction;
         this.direction = direction;
     }
 
+    /**
+     * Chase the skier
+     * @param skier Skier Entity
+     */
     chase(skier)  {
 
+        // If currently eating the skier, don't chase, just eat
         if (this.eating) {
             this.eatSkier();
         }
+        // If not eating the skier, chase by moving the direction the skier is moving
         else {
             this.setDirection(skier.direction);
 
+            // If changing direction, set turning so that the speed is adjusted
             if (this.isChangingDirection()) {
                 this.setTurning();
             }
@@ -64,6 +84,7 @@ export class Rhino extends Entity {
                 }
             }
 
+            // Display the correct assets to animate the rhino running
             this.runningAnimate = this.animate(this.runningAnimate, Constants.RHINO_RUN_ASSET, Constants.RHINO_RUN);
             if(this.runningAnimate === 0) {
                 this.runningAnimate = Constants.RHINO_RUN.RUN_1;
@@ -72,6 +93,10 @@ export class Rhino extends Entity {
 
     }
 
+    /**
+     * Is the rhino changing direction?
+     * @returns {boolean}
+     */
     isChangingDirection() {
         if(this.previousDirection !== this.direction) {
             return true;
@@ -81,10 +106,18 @@ export class Rhino extends Entity {
         }
     }
 
+    /**
+     * The rhino is turning for RHINO_TURN_TIME
+     */
     setTurning() {
         this.turning = Constants.RHINO_TURN_TIME;
     }
 
+    /**
+     * Get the rhino speed. Rhinos are big and clumsy so they slow down while turning, but once they get going
+     * they are faster than a skier.
+     * @returns {number}
+     */
     getSpeed() {
         if(this.turning > 0) {
             this.turning--;
@@ -95,6 +128,12 @@ export class Rhino extends Entity {
         }
     }
 
+    /**
+     * Check if the rhino caught the skier
+     * @param skier Skier Entity
+     * @param assetManager Assets to use for calculating if the asset boundaries intersect indicating a collision
+     * @returns {boolean}
+     */
     checkIfRhinoCaughtSkier(skier, assetManager) {
         const rhinoAsset = assetManager.getAsset(this.assetName);
         const rhinoBounds = new Rect(
@@ -120,6 +159,9 @@ export class Rhino extends Entity {
         return caught;
     };
 
+    /**
+     * Animate eating the skier
+     */
     eatSkier() {
         this.eatingAnimate = this.animate(this.eatingAnimate, Constants.RHINO_EAT_ASSET, Constants.RHINO_EAT);
     }

@@ -7,22 +7,38 @@ const STARTING_OBSTACLE_GAP = 100;
 const STARTING_OBSTACLE_REDUCER = 300;
 const NEW_OBSTACLE_CHANCE = 8;
 
+/**
+ * Obstacle Manager
+ *
+ */
 export class ObstacleManager {
     obstacles = [];
 
     constructor() {
     }
 
+    /**
+     * Get all the obstacles
+     * @returns {[]} Array of obstacles
+     */
     getObstacles() {
         return this.obstacles;
     }
 
+    /**
+     * Draw the obstacles on the drawing canvas using the provided assets
+     * @param canvas Drawing Canvas
+     * @param assetManager Available assets
+     */
     drawObstacles(canvas, assetManager) {
         this.obstacles.forEach((obstacle) => {
             obstacle.draw(canvas, assetManager);
         });
     }
 
+    /**
+     * Randomly place the initial obstacles
+     */
     placeInitialObstacles() {
         const numberObstacles = Math.ceil((Constants.GAME_WIDTH / STARTING_OBSTACLE_REDUCER) * (Constants.GAME_HEIGHT / STARTING_OBSTACLE_REDUCER));
 
@@ -40,6 +56,11 @@ export class ObstacleManager {
         });
     }
 
+    /**
+     * Place a single obstacle in the game window by detecting if the game window has moved
+     * @param gameWindow
+     * @param previousGameWindow
+     */
     placeNewObstacle(gameWindow, previousGameWindow) {
         const shouldPlaceObstacle = randomInt(1, NEW_OBSTACLE_CHANCE);
         if(shouldPlaceObstacle !== NEW_OBSTACLE_CHANCE) {
@@ -61,22 +82,45 @@ export class ObstacleManager {
         }
     };
 
+    /**
+     * Place an obstacle on the left side of the game window
+     * @param gameWindow
+     */
     placeObstacleLeft(gameWindow) {
         this.placeRandomObstacle(gameWindow.left, gameWindow.left, gameWindow.top, gameWindow.bottom);
     }
 
+    /**
+     * Place an obstacle on the right side of the game window
+     * @param gameWindow
+     */
     placeObstacleRight(gameWindow) {
         this.placeRandomObstacle(gameWindow.right, gameWindow.right, gameWindow.top, gameWindow.bottom);
     }
 
+    /**
+     * Place an obstacle on the top of the game window
+     * @param gameWindow
+     */
     placeObstacleTop(gameWindow) {
         this.placeRandomObstacle(gameWindow.left, gameWindow.right, gameWindow.top, gameWindow.top);
     }
 
+    /**
+     * Place an obstacle on the bottom of the game window
+     * @param gameWindow
+     */
     placeObstacleBottom(gameWindow) {
         this.placeRandomObstacle(gameWindow.left, gameWindow.right, gameWindow.bottom, gameWindow.bottom);
     }
 
+    /**
+     * Place a random obstacle
+     * @param minX
+     * @param maxX
+     * @param minY
+     * @param maxY
+     */
     placeRandomObstacle(minX, maxX, minY, maxY) {
         const position = this.calculateOpenPosition(minX, maxX, minY, maxY);
         const newObstacle = new Obstacle(position.x, position.y);
@@ -84,6 +128,14 @@ export class ObstacleManager {
         this.obstacles.push(newObstacle);
     }
 
+    /**
+     * Find position within the given limits without an obstacle
+     * @param minX
+     * @param maxX
+     * @param minY
+     * @param maxY
+     * @returns {{x, y}|{x: number, y}|{x: number, y: number}}
+     */
     calculateOpenPosition(minX, maxX, minY, maxY) {
         const x = randomInt(minX, maxX);
         const y = randomInt(minY, maxY);

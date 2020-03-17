@@ -10,7 +10,16 @@ const assetTypes = [
     Constants.RAMP
 ];
 
+/**
+ * Obstacle Entity
+ */
 export class Obstacle extends Entity {
+
+    /**
+     * Create a new obstacle at position x, y
+     * @param x
+     * @param y
+     */
     constructor(x, y) {
         super(x, y);
 
@@ -18,10 +27,18 @@ export class Obstacle extends Entity {
         this.assetName = assetTypes[assetIdx];
     }
 
+    /**
+     * Is obstacle a rock?
+     * @returns {boolean}
+     */
     isRock() {
         return (this.assetName === Constants.ROCK1) || (this.assetName === Constants.ROCK2);
     }
 
+    /** Is obstacle a ramp?
+     *
+     * @returns {boolean}
+     */
     isRamp() {
         return this.assetName === Constants.RAMP;
     }
