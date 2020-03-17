@@ -72,7 +72,7 @@ export class Skier extends Entity {
     }
 
     turnLeft() {
-        if (this.isJumping()) {
+        if (this.isJumping() || this.isEaten()) {
             return;
         }
 
@@ -89,7 +89,7 @@ export class Skier extends Entity {
     }
 
     turnRight() {
-        if (this.isJumping()) {
+        if (this.isJumping() || this.isEaten()) {
             return;
         }
 
@@ -106,7 +106,7 @@ export class Skier extends Entity {
     }
 
     turnUp() {
-        if (this.isJumping()) {
+        if (this.isJumping() || this.isEaten()) {
             return;
         }
 
@@ -116,7 +116,7 @@ export class Skier extends Entity {
     }
 
     turnDown() {
-        if (this.isJumping()) {
+        if (this.isJumping() || this.isEaten()) {
             return;
         }
 
