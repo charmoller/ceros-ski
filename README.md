@@ -78,5 +78,10 @@ The following new features and feature enhancements have been implemented.
   * Mock the loading assets in unit tests so can implement more tests of the game and asset manager. 
   * Either make the rhino go around obstacles or leave as now where the rhino goes through obstacles but
   implement animations that shows the obstacles being smashed.
+  * Provide a way to pause and resume the game
+  * Add a score that increments as the skier skis further
+  * Increase the difficulty the longer the skier skis (increase speed, increase obstacle frequency, etc.)
+
+
   
    
