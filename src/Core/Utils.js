@@ -1,9 +1,21 @@
+/**
+ * Generate a random integer
+ * @param min
+ * @param max
+ * @returns {number}
+ */
 export function randomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * Check if 2 rectangles intersect, useful for collision detection
+ * @param rect1
+ * @param rect2
+ * @returns {boolean}
+ */
 export function intersectTwoRects(rect1, rect2) {
     return !(rect2.left > rect1.right ||
         rect2.right < rect1.left ||
@@ -11,6 +23,9 @@ export function intersectTwoRects(rect1, rect2) {
         rect2.bottom < rect1.top);
 }
 
+/**
+ * Rectangle
+ */
 export class Rect {
     left = 0;
     top = 0;
@@ -24,9 +39,3 @@ export class Rect {
         this.bottom = bottom;
     }
 }
-
-Number.prototype.between = function(a, b) {
-    var min = Math.min.apply(Math, [a, b]),
-        max = Math.max.apply(Math, [a, b]);
-    return this >= min && this < max;
-};

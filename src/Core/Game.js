@@ -24,9 +24,6 @@ export class Game {
         this.skier = new Skier(0, 0);
         this.obstacleManager = new ObstacleManager();
 
-        // Set the rhino to undefined because it doesn't appear until later in the game.
-        this.rhino = undefined;
-
         // Handle key presses
         document.addEventListener('keydown', this.handleKeyDown.bind(this));
     }
