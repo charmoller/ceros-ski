@@ -88,6 +88,8 @@ export class Game {
         }
 
         this.obstacleManager.drawObstacles(this.canvas, this.assetManager);
+
+        // Display scoreboard
         this.canvas.drawRectWithText(this.skier.x + (Constants.GAME_WIDTH / 10), this.skier.y - (Constants.GAME_WIDTH / 10), "Score: "+this.skier.calculateScore());
     }
 

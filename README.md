@@ -66,6 +66,11 @@ The following new features and feature enhancements have been implemented.
 
   * Reset the game after the skier has been eaten but clicking the mouse.
 
+### Score
+
+   * Display a score as the skier travels further
+   * Reset score when game is started over
+   
 ## Known Bugs
 
   * The asset manager load asset unit tests are not functioning and have been disabled.
@@ -79,10 +84,10 @@ The following new features and feature enhancements have been implemented.
   * Either make the rhino go around obstacles or leave as now where the rhino goes through obstacles but
   implement animations that shows the obstacles being smashed.
   * Provide a way to pause and resume the game
-  * Add a score that increments as the skier skis further
   * Increase the difficulty the longer the skier skis (increase speed, increase obstacle frequency, etc.)
   * Implement additional unit tests and improve unit test coverage
-  * Modularize unit tests, and factor out common code for reuse eg. creating expected objects
+  * Modularize unit tests and factor out common code for reuse eg. creating expected objects
+  * Refactor Score into it's own class so that it is more flexible if how the score is displayed changes
 
 
   
