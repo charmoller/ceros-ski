@@ -88,6 +88,7 @@ The following new features and feature enhancements have been implemented.
 ## Known Bugs
 
   * The asset manager load asset unit tests are not functioning and have been disabled.
+  * Refresh the browser sometimes causes a crash / blank screen.
   
 ## Future Improvements
   
