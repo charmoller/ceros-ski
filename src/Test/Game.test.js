@@ -13,13 +13,16 @@ test('Create new game object', () => {
 test('Rhino is coming', () => {
     document.body.innerHTML = '<canvas id="skiCanvas"></canvas>';
     const game = new Game();
-    const doomedSkier = new Skier(0, 0);
     expect(game.rhinoDelay).toBe(Constants.RHINO_DELAY);
+    expect(game.rhino).toEqual({assetName: Constants.RHINO_DEFAULT, chasing: false, direction: Constants.SKIER_DIRECTIONS.DOWN, eating: false, eatingAnimate: Constants.RHINO_EAT.LIFT, previousDirection: Constants.SKIER_DIRECTIONS.DOWN, runningAnimate: Constants.RHINO_RUN.RUN_1, turning: 0, speed: Constants.RHINO_STARTING_SPEED, x: 0, y: 0});
     for (let i = 1; i < Constants.RHINO_DELAY; i++) {
-        doomedSkier.move();
-        expect(doomedSkier.numberOfMoves).not.toEqual(Constants.RHINO_DELAY);
+        game.skier.move();
+        expect(game.skier.numberOfMoves).not.toEqual(Constants.RHINO_DELAY);
     }
 
-    doomedSkier.move();
-    expect(doomedSkier.numberOfMoves).toEqual(Constants.RHINO_DELAY);
+    game.skier.move();
+    expect(game.skier.numberOfMoves).toEqual(Constants.RHINO_DELAY);
+
+    game.displayRhino();
+    expect(game.rhino).toEqual({assetName: Constants.RHINO_RUN_LEFT, chasing: true, direction: Constants.SKIER_DIRECTIONS.DOWN, eating: false, eatingAnimate: Constants.RHINO_EAT.LIFT, previousDirection: Constants.SKIER_DIRECTIONS.DOWN, runningAnimate: Constants.RHINO_RUN.RUN_1 - 1, turning: 0, speed: Constants.RHINO_STARTING_SPEED, x: 0, y: (Constants.RHINO_DELAY * Constants.SKIER_STARTING_SPEED) - (Constants.GAME_HEIGHT / 2) + Constants.RHINO_STARTING_SPEED});
 });

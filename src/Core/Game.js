@@ -22,6 +22,7 @@ export class Game {
         this.assetManager = new AssetManager();
         this.canvas = new Canvas(Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
         this.skier = new Skier(0, 0);
+        this.rhino = new Rhino(0, 0);
         this.obstacleManager = new ObstacleManager();
 
         // Handle key presses
@@ -71,6 +72,7 @@ export class Game {
         this.obstacleManager.placeNewObstacle(this.gameWindow, previousGameWindow);
 
         this.skier.checkIfSkierHitObstacle(this.obstacleManager, this.assetManager);
+        this.skier.eaten = this.rhino.checkIfRhinoCaughtSkier(this.skier, this.assetManager);
     }
 
     /**
@@ -81,7 +83,7 @@ export class Game {
         this.canvas.setDrawOffset(this.gameWindow.left, this.gameWindow.top);
 
         if (!this.skier.eaten) this.skier.draw(this.canvas, this.assetManager);
-        if (this.rhino !== undefined) {
+        if (this.rhino.hasStartedChasing()) {
             this.rhino.draw(this.canvas, this.assetManager);
         }
 
@@ -106,12 +108,7 @@ export class Game {
     displayRhino() {
         // Delay displaying the rhino until RHINO_DELAY number of skier moves
         if(this.skier.numberOfMoves >= this.rhinoDelay) {
-            if(this.rhino === undefined) {
-                this.rhino = new Rhino(this.skier.x, this.skier.y - (Constants.GAME_HEIGHT / 2), this.skier.direction);
-            }
-
             this.rhino.chase(this.skier);
-            this.skier.eaten = this.rhino.checkIfRhinoCaughtSkier(this.skier, this.assetManager);
         }
     }
 

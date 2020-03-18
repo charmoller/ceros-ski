@@ -9,11 +9,13 @@ export class Rhino extends Entity {
     assetName = Constants.RHINO_DEFAULT;
 
     direction = Constants.SKIER_DIRECTIONS.DOWN;
+    previousDirection = Constants.SKIER_DIRECTIONS.DOWN;
     speed = Constants.RHINO_STARTING_SPEED;
     turning = 0;
     eating = false;
     eatingAnimate = Constants.RHINO_EAT.LIFT;
     runningAnimate = Constants.RHINO_RUN.RUN_1;
+    chasing = false;
 
     /**
      * Create new rhino
@@ -21,9 +23,27 @@ export class Rhino extends Entity {
      * @param y
      * @param direction
      */
-    constructor(x, y, direction) {
+    constructor(x, y) {
         super(x, y);
-        this.setDirection(direction);
+    }
+
+    /**
+     * If Rhino hasn't started chasing the skier, start chasing
+     * @param skier
+     */
+    startChasing(skier) {
+       this.x = skier.x;
+       this.y = skier.y - (Constants.GAME_HEIGHT / 2);
+       this.setDirection(skier.direction);
+       this.chasing = true;
+    }
+
+    /**
+     * Has Rhino started chasing the skier?
+     * @returns {boolean}
+    */
+    hasStartedChasing() {
+        return this.chasing;
     }
 
     /**
@@ -41,7 +61,12 @@ export class Rhino extends Entity {
      */
     chase(skier)  {
 
-        // If currently eating the skier, don't chase, just eat
+        // If hasn't started chasing skier, start chasing
+        if (!this.hasStartedChasing()) {
+            this.startChasing(skier);
+        }
+
+       // If currently eating the skier, don't chase, just eat
         if (this.eating) {
             this.eatSkier();
         }

@@ -81,6 +81,8 @@ The following new features and feature enhancements have been implemented.
   * Provide a way to pause and resume the game
   * Add a score that increments as the skier skis further
   * Increase the difficulty the longer the skier skis (increase speed, increase obstacle frequency, etc.)
+  * Implement additional unit tests and improve unit test coverage
+  * Modularize unit tests, and factor out common code for reuse eg. creating expected objects
 
 
   
