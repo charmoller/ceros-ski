@@ -88,6 +88,7 @@ export class Game {
         }
 
         this.obstacleManager.drawObstacles(this.canvas, this.assetManager);
+        this.canvas.drawRectWithText(this.skier.x + (Constants.GAME_WIDTH / 10), this.skier.y - (Constants.GAME_WIDTH / 10), "Score: "+this.skier.calculateScore());
     }
 
     /**
@@ -112,6 +113,10 @@ export class Game {
         }
     }
 
+    /**
+     * Game is over because skier has been eaten
+     * @returns {boolean}
+     */
     isOver() {
         return this.skier.eaten;
     }

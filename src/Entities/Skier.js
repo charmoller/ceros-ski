@@ -151,7 +151,8 @@ export class Skier extends Entity {
             );
 
             if (this.isJumping() && obstacle.isRock()) return false;
-            else return intersectTwoRects(skierBounds, obstacleBounds);
+
+            return intersectTwoRects(skierBounds, obstacleBounds);
         });
 
         if(collision) {
@@ -168,5 +169,13 @@ export class Skier extends Entity {
     isEaten()
     {
         return this.eaten;
+    }
+
+    getDistanceSkied() {
+        return this.y;
+    }
+
+    calculateScore() {
+        return Math.round(this.getDistanceSkied() / 100);
     }
 }

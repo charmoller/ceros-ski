@@ -69,4 +69,14 @@ export class Canvas {
 
         this.ctx.drawImage(image, x, y, width, height);
     }
+
+    drawRectWithText(x, y, text)
+    {
+        x -= this.drawOffset.x;
+        y -= this.drawOffset.y;
+
+        this.ctx.font = "16px Arial";
+        this.ctx.fillStyle = "#0095DD";
+        this.ctx.fillText(text, x, y);
+    }
 }
