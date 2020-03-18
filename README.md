@@ -33,10 +33,10 @@ The base code design/architecture was left essentially intact. The following bug
 ## Unit tests
 
   Unit Tests have been implemented in Jest. The code coverage of the unit tests for all files is;
-  * Statements 43.54%
-  * Branches 22.73%
-  * Functions 35.62%
-  * Lines 43.9%
+  * Statements 46.42%
+  * Branches 27.27%
+  * Functions 40.51%
+  * Lines 46.8%
   
   Key areas that have been unit tested are;
   * Skier and Rhino Animation
