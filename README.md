@@ -102,6 +102,7 @@ The following new features and feature enhancements have been implemented.
   * Implement additional unit tests and improve unit test coverage.
   * Modularize unit tests and factor out common code like the code to create expected objects.
   * Refactor Score into it's own class to decouple it from the Game class.
+  * Improve display the score so that it isn't randomly floating in space.
 
 
   
