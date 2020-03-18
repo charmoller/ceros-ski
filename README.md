@@ -103,6 +103,7 @@ The following new features and feature enhancements have been implemented.
   * Modularize unit tests and factor out common code like the code to create expected objects.
   * Refactor Score into it's own class to decouple it from the Game class.
   * Improve display the score so that it isn't randomly floating in space.
+  * Change the rhino chase so that the rhino stops chasing the skier after a period of time.
 
 
   
