@@ -15,7 +15,8 @@
     "url": "git+https://github.com/ceros/ceros-ski.git"
   },
   "jest": {
-    "setupFiles": ["jest-canvas-mock"]
+    "setupFiles": ["jest-canvas-mock"],
+    "testEnvironmentOptions": { "resources": "usable" }
   },
   "author": "Dan Wash",
   "license": "",
